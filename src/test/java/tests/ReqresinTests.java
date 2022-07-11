@@ -54,20 +54,20 @@ public class ReqresinTests {
 
     @Test
     void testGet() {
-        String resp=
-        given()
-                .when()
-                .log().uri()
-                .log().body()
-                .get("https://reqres.in/api/users/23")
+        String resp =
+                given()
+                        .when()
+                        .log().uri()
+                        .log().body()
+                        .get("https://reqres.in/api/users/23")
 
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(404)
-                .extract().asString();
+                        .then()
+                        .log().status()
+                        .log().body()
+                        .statusCode(404)
+                        .extract().asString();
         System.out.println(resp);
-        assertEquals(resp,"{}");
+        assertEquals(resp, "{}");
     }
 
     @Test
@@ -95,10 +95,10 @@ public class ReqresinTests {
         for (int i = 0; i < arr.length(); i++) {
 
 
-            if (arr.getJSONObject(i).getInt("id")==5){
+            if (arr.getJSONObject(i).getInt("id") == 5) {
                 String name = arr.getJSONObject(i).getString("name");
-                System.out.println("Name for id:"+name+".");
-                if (!name.equalsIgnoreCase("tigerlily")){
+                System.out.println("Name for id:" + name + ".");
+                if (!name.equalsIgnoreCase("tigerlily")) {
                     fail();
                 }
             }
@@ -107,5 +107,25 @@ public class ReqresinTests {
 
     }
 
+
+    @Test
+    void testPost() {
+        String body = "{ \"name\": \"morpheus\", \"job\": \"leader\" }";
+        String resp =
+                given()
+                        .body(body).contentType(ContentType.JSON)
+                        .when()
+                        .post("https://reqres.in/api/users")
+
+                        .then()
+                        .log().body()
+                        .statusCode(201)
+                        .extract().asString();
+        System.out.println(resp);
+        //String expected="{ \"name\": \"morpheus\", \"job\": \"leader\", \"id\": \"227\", \"createdAt\": \"2022-07-11T18:20:07.627Z\" }";
+        //expected=expected.replace(" ","");
+        //System.out.println(expected);
+        assertTrue(resp.contains("\"job\":\"leader\""));
+    }
 
 }

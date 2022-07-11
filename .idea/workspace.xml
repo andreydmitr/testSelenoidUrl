@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bb4e2ca0-e95a-42ed-a98e-4f21dd24c1a6" name="Changes" comment="initial">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/tests/ReqresinTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/ReqresinTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +56,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "/media/hdd/unidragon_qa_tests/build.gradle",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -226,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657561122294</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="initial">
+      <created>1657563555660</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1657563555660</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
