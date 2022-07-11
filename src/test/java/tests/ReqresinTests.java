@@ -2,9 +2,14 @@ package tests;
 
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
+import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.json.*;
 
 public class ReqresinTests {
 
@@ -24,7 +29,7 @@ public class ReqresinTests {
                 .statusCode(200)
                 .log()
                 .all()
-                .body("token", Matchers.is("QpwL5tke4Pnpja7X4"));
+                .body("token", is("QpwL5tke4Pnpja7X4"));
     }
 
     @Test
@@ -43,6 +48,64 @@ public class ReqresinTests {
                 .statusCode(400)
                 .log()
                 .all()
-                .body("error", Matchers.is("Missing password"));
+                .body("error", is("Missing password"));
     }
+
+
+    @Test
+    void testGet() {
+        String resp=
+        given()
+                .when()
+                .log().uri()
+                .log().body()
+                .get("https://reqres.in/api/users/23")
+
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(404)
+                .extract().asString();
+        System.out.println(resp);
+        assertEquals(resp,"{}");
+    }
+
+    @Test
+    void testGet1() {
+        String resp =
+                given()
+                        .when()
+                        .log().uri()
+                        .log().body()
+                        .get("https://reqres.in/api/unknown")
+
+                        .then()
+                        .log().status()
+                        .log().body()
+                        .statusCode(200)
+                        //.body("total_pages", is(2));
+
+                        .extract().asString();
+
+
+        System.out.println(resp);
+
+        JSONObject jo = new JSONObject(resp);
+        JSONArray arr = jo.getJSONArray("data");
+        for (int i = 0; i < arr.length(); i++) {
+
+
+            if (arr.getJSONObject(i).getInt("id")==5){
+                String name = arr.getJSONObject(i).getString("name");
+                System.out.println("Name for id:"+name+".");
+                if (!name.equalsIgnoreCase("tigerlily")){
+                    fail();
+                }
+            }
+        }
+
+
+    }
+
+
 }

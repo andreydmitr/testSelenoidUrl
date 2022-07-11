@@ -28,7 +28,9 @@ dependencies {
             //"org.aeonbits.owner:owner:$ownerVersion",
             //"org.assertj:assertj-core:$assertjVersion",
             //"com.opencsv:opencsv:$opencsvVersion",
-            "io.rest-assured:rest-assured:5.1.1"
+            "io.rest-assured:rest-assured:5.1.1",
+            "org.json:json:20220320"
+
 
 
     )
